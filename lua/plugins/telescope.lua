@@ -23,6 +23,10 @@ return {
             previewer = false,
             theme = "ivy",
           },
+          diagnostics = {
+            previewer = false,
+            theme = "ivy",
+          },
           buffers = {
             previewer = false,
             theme = "ivy",
@@ -38,6 +42,7 @@ return {
       vim.keymap.set("n", "<leader>fg", ":Telescope live_grep disable_devicons=true<CR>", {})
       vim.keymap.set("n", "<leader>fb", ":Telescope buffers disable_devicons=true<CR>", {})
       vim.keymap.set("n", "<leader>fh", ":Telescope help_tags disable_devicons=true<CR>", {})
+      vim.keymap.set("n", "<leader>fd", ":Telescope diagnostics disable_devicons=true<CR>", {})
     end,
   },
 }
