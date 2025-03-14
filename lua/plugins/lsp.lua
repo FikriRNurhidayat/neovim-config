@@ -10,7 +10,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "tsserver", "html", "cssls", "gopls" },
+        ensure_installed = { "lua_ls", "tsserver", "html", "cssls", "gopls", "clangd", "denols" },
       })
     end,
   },
@@ -25,8 +25,29 @@ return {
         capabilities = capabilities,
       })
 
+      lspconfig.denols.setup({
+        capabilities = capabilities,
+        root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+      })
+
       lspconfig.tsserver.setup({
         capabilities = capabilities,
+        settings = {
+          typescript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "all",
+              includeInlayVariableTypeHints = true,
+            }
+          },
+          javascript = {
+            inlayHints = {
+              includeInlayParameterNameHints = "all",
+              includeInlayVariableTypeHints = true,
+            }
+          }
+        },
+        root_dir = lspconfig.util.root_pattern("package.json"),
+        single_file_support = false,
       })
 
       lspconfig.lua_ls.setup({
@@ -48,10 +69,16 @@ return {
           Lua = {},
         },
       })
+
       lspconfig.html.setup({
         capabilities = capabilities,
       })
+
       lspconfig.cssls.setup({
+        capabilities = capabilities,
+      })
+
+      lspconfig.clangd.setup({
         capabilities = capabilities,
       })
 
