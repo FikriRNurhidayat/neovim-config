@@ -23,6 +23,7 @@ return {
           root_folder_label = ':~',
           group_empty = true,
           icons = {
+            symlink_arrow = " => ",
             show = {
               file = false,
               folder = false,
