@@ -29,12 +29,12 @@ return {
               git = false,
               diagnostics = false,
               bookmarks = false,
-              folder_arrow = true,
+              folder_arrow = false,
             },
           },
         },
         filters = {
-          dotfiles = true,
+          dotfiles = false,
         },
       })
 
